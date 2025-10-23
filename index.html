@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Anti_CORS :: Local Dev Tool</title>
+    <!-- デザインを司るCSSファイルを読み込み -->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <main class="container">
+        <!-- ツールのタイトルとコンセプト -->
+        <header>
+            <h1>Anti_CORS</h1>
+            <p class="subtitle">// Override Browser Security for Local Development.</p>
+        </header>
+
+        <!-- ファイルアップロードエリア -->
+        <section id="drop-zone" class="drop-zone">
+            <div class="drop-zone-prompt">
+                <p>DROP PROJECT FOLDER HERE</p>
+                <p class="or-text">-- or --</p>
+                <!-- 見えないinputをlabelで操作する -->
+                <label for="file-input" class="button">SELECT FOLDER</label>
+                <input type="file" id="file-input" webkitdirectory directory multiple style="display: none;">
+            </div>
+        </section>
+
+        <!-- 処理状況と結果表示エリア -->
+        <section class="status-panel">
+            <!-- 処理状況を表示する場所 -->
+            <div id="status-area">
+                <p>&gt; Status: <span id="status-text">Awaiting Input...</span><span class="cursor">█</span></p>
+            </div>
+            <!-- ダウンロードリンクが表示される場所 -->
+            <div id="result-area" class="result-area">
+                <!-- JavaScriptによって動的にここにリンクが生成される -->
+            </div>
+        </section>
+        
+        <footer>
+            <p>// This tool generates a ZIP file. Load it as an "unpacked extension" in chrome://extensions.</p>
+        </footer>
+
+    </main>
+
+    <!-- 外部ライブラリ: JSZip (先に読み込む) -->
+    <script src="js/lib/jszip.min.js"></script>
+    <!-- メインの処理を書くJavaScriptファイル -->
+    <script src="js/main.js"></script>
+
+</body>
+</html>

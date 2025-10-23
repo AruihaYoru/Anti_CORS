@@ -1,0 +1,134 @@
+/* --- グローバル変数と基本設定 --- */
+:root {
+    --bg-color: #0D0D0D;      /* 背景色: 限りなく黒に近い黒 */
+    --text-color: #00FF41;    /* テキスト色: ネオングリーン */
+    --accent-color: #FFBF00;  /* アクセント色: アンバー */
+    --glow-color: rgba(0, 255, 65, 0.75); /* グロー（発光）の色 */
+    --border-color: rgba(0, 255, 65, 0.3); /* ボーダー色 */
+}
+
+/* 点滅カーソルのアニメーション */
+@keyframes blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0; }
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    font-family: 'Fira Code', 'Source Code Pro', 'Courier New', monospace;
+    font-size: 16px;
+    line-height: 1.6;
+    margin: 0;
+    padding: 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    box-sizing: border-box;
+}
+
+/* --- メインコンテナ --- */
+.container {
+    width: 100%;
+    max-width: 700px;
+    text-align: center;
+}
+
+/* --- ヘッダー --- */
+header h1 {
+    font-size: 3rem;
+    margin: 0;
+    letter-spacing: 2px;
+    text-shadow: 0 0 5px var(--glow-color), 0 0 10px var(--glow-color);
+}
+
+header .subtitle {
+    font-size: 1rem;
+    opacity: 0.8;
+    margin-bottom: 3rem;
+}
+
+/* --- ドラッグ＆ドロップゾーン --- */
+.drop-zone {
+    border: 2px dashed var(--border-color);
+    padding: 3rem 1rem;
+    margin-bottom: 2rem;
+    transition: background-color 0.3s, border-color 0.3s;
+    cursor: pointer;
+}
+
+.drop-zone:hover,
+.drop-zone.drag-over { /* drag-overクラスはJSで付与 */
+    background-color: rgba(0, 255, 65, 0.05);
+    border-color: var(--text-color);
+}
+
+.drop-zone-prompt .or-text {
+    margin: 1rem 0;
+    opacity: 0.6;
+}
+
+/* --- ボタン --- */
+.button {
+    background-color: transparent;
+    border: 1px solid var(--text-color);
+    color: var(--text-color);
+    padding: 0.75rem 1.5rem;
+    font-family: inherit;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s, box-shadow 0.3s;
+}
+
+.button:hover {
+    background-color: var(--bg-color);
+    box-shadow: 0 0 8px var(--glow-color);
+}
+
+/* --- ステータスパネル --- */
+.status-panel {
+    background-color: rgba(0, 0, 0, 0.3);
+    border: 1px solid var(--border-color);
+    padding: 1rem 1.5rem;
+    text-align: left;
+    min-height: 100px; /* パネルの高さを確保 */
+    font-family: inherit;
+}
+
+#status-area p {
+    margin: 0;
+}
+
+.cursor {
+    display: inline-block;
+    vertical-align: middle;
+    animation: blink 1s step-end infinite;
+}
+
+/* --- 結果表示エリア（ダウンロードリンク） --- */
+.result-area {
+    margin-top: 1rem;
+}
+
+.result-area a {
+    display: inline-block;
+    background-color: var(--accent-color);
+    color: var(--bg-color);
+    font-weight: bold;
+    text-decoration: none;
+    padding: 0.8rem 2rem;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.result-area a:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(255, 191, 0, 0.6);
+}
+
+/* --- フッター --- */
+footer {
+    margin-top: 3rem;
+    font-size: 0.8rem;
+    opacity: 0.5;
+}
